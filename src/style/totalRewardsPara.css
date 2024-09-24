@@ -1,0 +1,17 @@
+.paragraph-wrap {
+    p {
+        width: 36%;
+        margin-left: 31%;
+        border-spacing: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-radius: 8px;
+        overflow: hidden;
+        text-transform: capitalize;
+        text-align: center;
+        padding: 15px;
+        background: #0c63ba;
+        color: white;
+        font-weight: bold
+    }
+}
