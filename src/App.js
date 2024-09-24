@@ -23,21 +23,21 @@ const calculateRewardPoints = (transactionAmount) => {
 }
 
 const totalRewardsPoint = () => {
-  const monthlyPoints = {};
+  const monthlyRewardPoints = {};
 
   // Calculate reward points for each month
   transactions.forEach((transaction) => {
     const points = calculateRewardPoints(transaction.amount);
 
-    if (!monthlyPoints[transaction.month]) {
-      monthlyPoints[transaction.month] = 0;
+    if (!monthlyRewardPoints[transaction.month]) {
+      monthlyRewardPoints[transaction.month] = 0;
     }
 
-    monthlyPoints[transaction.month] += points;
+    monthlyRewardPoints[transaction.month] += points;
   });
 
   // Calculate total reward points
-  const totalPoints = Object.values(monthlyPoints).reduce(
+  const totalPoints = Object.values(monthlyRewardPoints).reduce(
     (acc, points) => acc + points,
     0
   )
@@ -50,12 +50,14 @@ const App = () => {
 const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    fetchData();     
   }, []);
+
+//useEffect to work as componentDidMount as passing empty [] as a dependency
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://api./transactions'); // Replace with your API endpoint
+      const response = await axios.get('https://api/transactions'); // Replace with API endpoint
       setTransactions(response.data);
     } catch (error) {
       console.log(error);
